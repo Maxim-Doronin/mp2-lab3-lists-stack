@@ -123,9 +123,9 @@ void List::insertAfter(valtype key, NODE *elem)
 	point->pNext = elem;
 }
 
-valtype List::getFirst()
+NODE* List::getFirst()
 {
-	return pFirst->key;
+	return pFirst;
 }
 
 
