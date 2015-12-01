@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 typedef unsigned char valtype;
 
 struct NODE
