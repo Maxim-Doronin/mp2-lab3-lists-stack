@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 typedef unsigned char valtype;
 
 struct NODE
@@ -12,6 +13,8 @@ class List {
 private: 
 	NODE* pFirst;
 public:
+	List();
+	List(const List &list);
 	void print();
 	NODE* search(valtype key);
 private:
