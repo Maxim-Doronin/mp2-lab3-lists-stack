@@ -25,5 +25,5 @@ public:
 	void insertBefore(valtype key, NODE *elem);
 	void insertAfter(valtype key, NODE *elem);
 
-	valtype getFirst();
+	NODE* getFirst();
 };
