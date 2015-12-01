@@ -7,11 +7,11 @@ using namespace std;
 
 int main()
 {
-	Stack operation;
-	Stack tracing;
+	Stack opStack;
+	Stack trackStack;
 	
-	string str;	
-	cin >> str;
+	string expression;	
+	cin >> expression;
 
 	map <unsigned char, int> operations;
 	operations['*'] = 3;
@@ -23,32 +23,32 @@ int main()
 	
 	char buff;
 
-	for (int i = 0; i < str.length(); i++){
-		buff = str[i];
+	for (int i = 0; i < expression.length(); i++){
+		buff = expression[i];
 		if (operations.count(buff)) {
-			if ((!operation.isEmpty()) && (operations[buff] < operations[operation.look()]) && (buff != '('))
-				while ((!operation.isEmpty()) && (operations[buff] <= operations[operation.look()]))
-					tracing.push(operation.pop());
+			if ((!opStack.isEmpty()) && (operations[buff] < operations[opStack.look()]) && (buff != '('))
+				while ((!opStack.isEmpty()) && (operations[buff] <= operations[opStack.look()]))
+					trackStack.push(opStack.pop());
 			
-			operation.push(buff);
+			opStack.push(buff);
 		}
 
-		if ((buff >= 0x41)&&(buff <= 0x5A)) tracing.push(buff);
+		if (((buff >= 0x41)&&(buff <= 0x5A))||((buff >= 0x61)&&(buff <= 0x7A))) trackStack.push(buff);
 		
 		if (buff == ')') {
-			while(operation.look() != '(')
-				tracing.push(operation.pop());
-			operation.pop();
+			while(opStack.look() != '(')
+				trackStack.push(opStack.pop());
+			opStack.pop();
 		}
 
 	}
-	while(!operation.isEmpty())
-		tracing.push(operation.pop());
+	while(!opStack.isEmpty())
+		trackStack.push(opStack.pop());
 	
 	string result;
 	string tmp;
-	while(!tracing.isEmpty()) {
-		tmp = tracing.pop();
+	while(!trackStack.isEmpty()) {
+		tmp = trackStack.pop();
 		result.insert(0, tmp);
 	}
 
