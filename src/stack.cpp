@@ -2,12 +2,12 @@
 
 Stack::Stack()
 {
-	list = new List;
+	list = new List();
 }
 
 Stack::Stack(const Stack &s)
 {
-	this->list = new List(s.list); //?
+	//this->list = new List(s.list); //?
 }
 
 int Stack::isEmpty() const
@@ -38,4 +38,10 @@ valtype Stack::pop()
 	valtype result = list->getFirst()->key;
 	list->erase(result);
 	return result;
+}
+
+valtype Stack::look()
+{
+	if(isEmpty()) throw "Stack is empty";
+	return list->getFirst()->key;
 }

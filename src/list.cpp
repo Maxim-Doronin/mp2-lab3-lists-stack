@@ -1,5 +1,15 @@
 #include "list.h"
 
+List::List()
+{
+	pFirst = 0;
+}
+
+List::List(const List &list)
+{
+
+}
+
 void List::print()
 {
 	if (pFirst == 0) {
