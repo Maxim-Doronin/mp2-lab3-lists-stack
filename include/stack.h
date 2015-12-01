@@ -12,4 +12,5 @@ public:
 	int isFull() const;
 	void push(valtype key);
 	valtype pop();
+	valtype look();
 };
