@@ -7,7 +7,6 @@ Stack::Stack()
 
 Stack::Stack(const Stack *s)
 {
-	
 	this->list = new List(s->list); //?
 }
 

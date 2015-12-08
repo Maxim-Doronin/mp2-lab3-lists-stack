@@ -7,5 +7,7 @@ using namespace std;
 
 int main()
 {
-	postfix_calculation(postfix_notation());
+	string expression;	
+	cin  >> expression;
+	cout << postfix_notation(expression) << endl;
 }

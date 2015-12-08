@@ -1,12 +1,9 @@
 #include "postfix.h"
 
-Stack* postfix_notation()
+string postfix_notation(string expression)
 {
 	Stack *opStack = new Stack();
-	Stack *trackStack = new Stack();;
-	
-	string expression;	
-	cin >> expression;
+	Stack *trackStack = new Stack();
 
 	map <unsigned char, int> op;
 	op['*'] = 3;
@@ -28,7 +25,8 @@ Stack* postfix_notation()
 			opStack->push(buff);
 		}
 
-		if (((buff >= 0x41)&&(buff <= 0x5A))||((buff >= 0x61)&&(buff <= 0x7A))
+		if   (((buff >= 0x41)&&(buff <= 0x5A))
+			||((buff >= 0x61)&&(buff <= 0x7A))
 			||((buff >= 0x30)&&(buff <= 0x39)))				//обработка операндов
 			trackStack->push(buff);
 		
@@ -44,15 +42,12 @@ Stack* postfix_notation()
 	
 	string result;
 	string tmp;
-	Stack tmpStack(trackStack);
-	while(!tmpStack.isEmpty()) {
-		tmp = tmpStack.pop();
+
+	while(!trackStack->isEmpty()) {
+		tmp = trackStack->pop();
 		result.insert(0, tmp);
 	}
-
-	cout << result << endl;
-
-	return trackStack;
+	return result;
 }
 
 void postfix_calculation(Stack* stackIn)
@@ -69,7 +64,9 @@ void postfix_calculation(Stack* stackIn)
 
 	while (!trackStack->isEmpty()){
 		buff = trackStack->pop();
-		if (((buff >= 0x41)&&(buff <= 0x5A))||((buff >= 0x61)&&(buff <= 0x7A))||((buff >= 0x30)&&(buff <= 0x39))){
+		if   (((buff >= 0x41)&&(buff <= 0x5A))
+			||((buff >= 0x61)&&(buff <= 0x7A))
+			||((buff >= 0x30)&&(buff <= 0x39))){
 			resultStack->push(buff);
 			continue;
 		}
