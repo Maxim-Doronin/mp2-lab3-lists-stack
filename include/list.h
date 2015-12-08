@@ -14,7 +14,7 @@ private:
 	NODE* pFirst;
 public:
 	List();
-	List(const List &list);
+	List(const List *list);
 	void print();
 	NODE* search(valtype key);
 private:

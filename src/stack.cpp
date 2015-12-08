@@ -5,9 +5,10 @@ Stack::Stack()
 	list = new List();
 }
 
-Stack::Stack(const Stack &s)
+Stack::Stack(const Stack *s)
 {
-	//this->list = new List(s.list); //?
+	
+	this->list = new List(s->list); //?
 }
 
 int Stack::isEmpty() const

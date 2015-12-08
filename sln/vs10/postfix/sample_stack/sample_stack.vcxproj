@@ -56,7 +56,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>../Debug</AdditionalLibraryDirectories>
-      <AdditionalDependencies>stack.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>stack.lib;postfix_notation.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -76,13 +76,16 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>../Release</AdditionalLibraryDirectories>
-      <AdditionalDependencies>stack.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>stack.lib;postfiz_notation.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\samples\sample_stack.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\postfix_notation\postfix_notation.vcxproj">
+      <Project>{8995405c-178f-492a-8916-8525990a5317}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\stack\stack.vcxproj">
       <Project>{075416f7-7acd-4611-8c8b-391fc7d2cdc4}</Project>
     </ProjectReference>
