@@ -10,4 +10,5 @@ int main()
 	string expression;	
 	cin  >> expression;
 	cout << postfix_notation(expression) << endl;
+	postfix_calculation(postfix_notation(expression));
 }

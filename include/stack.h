@@ -7,7 +7,7 @@ private:
 	List *list;
 public:
 	Stack();
-	Stack(const Stack *s);
+	Stack(const Stack &s);
 	int isEmpty() const;
 	int isFull() const;
 	void push(valtype key);

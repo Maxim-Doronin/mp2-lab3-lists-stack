@@ -9,4 +9,4 @@ using namespace std;
 
 string postfix_notation(string);
 
-void postfix_calculation(Stack* trackStack);
+void postfix_calculation(string);
