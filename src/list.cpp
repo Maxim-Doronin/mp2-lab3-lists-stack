@@ -5,9 +5,14 @@ List::List()
 	pFirst = 0;
 }
 
-List::List(const List &list)
+List::List(const List *list)
 {
-
+	pFirst = 0;
+	NODE* tmp = list->pFirst;
+	while (tmp != 0){
+		insertLast(tmp->key);
+		tmp = tmp->pNext;
+	}
 }
 
 void List::print()
@@ -103,6 +108,10 @@ void List::insertFirst(valtype key)
 void List::insertLast(valtype key)
 {
 	NODE *tmp = pFirst;
+	if (!pFirst) {
+		insertFirst(key);
+		return;
+	}
 	while(tmp->pNext != 0)
 		tmp = tmp->pNext;
 	tmp->pNext = new NODE;
