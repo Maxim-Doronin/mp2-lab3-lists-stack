@@ -1,38 +1,47 @@
 #include "stack.h"
+#include "list.h"
+#include "list.cpp"
 
-Stack::Stack()
+template <class valtype>
+Stack<valtype>::Stack()
 {
-	list = new List();
+	list = new List<valtype>();
 }
 
-Stack::Stack(const Stack &s)
+template <class valtype>
+Stack<valtype>::Stack(const Stack<valtype> &s)
 {
-	this->list = new List(*(s.list)); //?
+	this->list = new List<valtype>(*(s.list)); 
 }
 
-int Stack::isEmpty() const
+template <class valtype>
+int Stack<valtype>::isEmpty() const
 {
 	return list->getFirst() == 0;
 }
 
-int Stack::isFull() const
+template <class valtype>
+int Stack<valtype>::isFull() const
 {
-	NODE *tmp;
+	NODE<valtype> *tmp;
 	try{
-		tmp = new NODE;}
+		tmp = new NODE<valtype>;
+	}
 	catch(...){
 		return 1;}
 	delete tmp;
 	return 0;
 }
 
-void Stack::push(valtype key)
+template <class valtype>
+void Stack<valtype>::push(valtype key)
 {
 	if(isFull()) throw "Stack is full";
 	list->insertFirst(key);
 }
 
-valtype Stack::pop()
+template <class valtype>
+valtype Stack<valtype>::pop()
 {
 	if(isEmpty()) throw "Stack is empty";
 	valtype result = list->getFirst()->key;
@@ -40,7 +49,8 @@ valtype Stack::pop()
 	return result;
 }
 
-valtype Stack::look()
+template <class valtype>
+valtype Stack<valtype>::look()
 {
 	if(isEmpty()) throw "Stack is empty";
 	return list->getFirst()->key;

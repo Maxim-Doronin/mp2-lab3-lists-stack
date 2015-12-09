@@ -1,28 +1,31 @@
 #include "list.h"
 
-List::List()
+template <class valtype>
+List<valtype>::List()
 {
 	pFirst = 0;
 }
 
-List::List(const List &list)
+template <class valtype>
+List<valtype>::List(const List<valtype> &list)
 {
 	pFirst = 0;
-	NODE* tmp = list.pFirst;
+	NODE<valtype>* tmp = list.pFirst;
 	while (tmp != 0){
 		insertLast(tmp->key);
 		tmp = tmp->pNext;
 	}
 }
 
-void List::print()
+template <class valtype>
+void List<valtype>::print()
 {
 	if (pFirst == 0) {
 		std::cout << "No members" << std::endl;
 		return;
 	}
 	
-	NODE *tmp = pFirst;
+	NODE<valtype> *tmp = pFirst;
 	while(tmp != 0)	{
 		std::cout << tmp->key << " ";
 		tmp = tmp->pNext;
@@ -30,11 +33,12 @@ void List::print()
 	std::cout << std::endl;
 }
 
-NODE* List::search(valtype key)
+template <class valtype>
+NODE<valtype>* List<valtype>::search(valtype key)
 {
 	if (pFirst == 0) throw "List is empty";
 	
-	NODE *tmp = pFirst;
+	NODE<valtype> *tmp = pFirst;
 	while((tmp != 0)&&(tmp->key != key))
 		tmp = tmp->pNext;
 	
@@ -43,11 +47,12 @@ NODE* List::search(valtype key)
 	return tmp;
 }
 
-NODE* List::searchPrev(valtype key, NODE *&elem)
+template <class valtype>
+NODE<valtype>* List<valtype>::searchPrev(valtype key, NODE<valtype> *&elem)
 {	
 	if (pFirst == 0) return 0;
 	
-	NODE *pPrev = 0;
+	NODE<valtype> *pPrev = 0;
 	elem = pFirst;
 	while ((elem != 0)&&(elem->key != key)) {
 		pPrev = elem;
@@ -62,10 +67,11 @@ NODE* List::searchPrev(valtype key, NODE *&elem)
 	return pPrev;
 }
 
-void List::erase(NODE *elem)
+template <class valtype>
+void List<valtype>::erase(NODE<valtype> *elem)
 {
-	NODE *point = pFirst;
-	NODE *pPrev = 0;
+	NODE<valtype> *point = pFirst;
+	NODE<valtype> *pPrev = 0;
 	while ((point != 0)&&(point != elem)) {
 		pPrev = point;
 		point = point->pNext;
@@ -82,11 +88,12 @@ void List::erase(NODE *elem)
 	return;
 }
 
-void List::erase(valtype key)
+template <class valtype>
+void List<valtype>::erase(valtype key)
 {
 	if(!pFirst) throw "List is empty";
-	NODE *point;
-	NODE *pPrev = searchPrev(key, point);
+	NODE<valtype> *point;
+	NODE<valtype> *pPrev = searchPrev(key, point);
 	if ((pPrev == 0)&&(pFirst->key != key)) 
 		throw "Can't find element";
 	if (pPrev == 0) {
@@ -99,34 +106,37 @@ void List::erase(valtype key)
 	return;
 }
 
-void List::insertFirst(valtype key)
+template <class valtype>
+void List<valtype>::insertFirst(valtype key)
 {
-	NODE *tmp = new NODE;
+	NODE<valtype> *tmp = new NODE<valtype>();
 	tmp->key = key;
 	tmp->pNext = pFirst;
 	pFirst = tmp;
 }
 
-void List::insertLast(valtype key)
+template <class valtype>
+void List<valtype>::insertLast(valtype key)
 {
-	NODE *tmp = pFirst;
+	NODE<valtype> *tmp = pFirst;
 	if (!pFirst) {
 		insertFirst(key);
 		return;
 	}
 	while(tmp->pNext != 0)
 		tmp = tmp->pNext;
-	tmp->pNext = new NODE;
+	tmp->pNext = new NODE<valtype>;
 	tmp = tmp->pNext;
 	tmp->key = key;
 	tmp->pNext = 0;
 }
 
-void List::insertBefore(valtype key, NODE *elem)
+template <class valtype>
+void List<valtype>::insertBefore(valtype key, NODE<valtype> *elem)
 {
 	if (!pFirst) throw "List is empty";
-	NODE *point;
-	NODE *pPrev = searchPrev(key, point);
+	NODE<valtype> *point;
+	NODE<valtype> *pPrev = searchPrev(key, point);
 	if ((pPrev == 0)&&(pFirst->key != key)) 
 		throw "No place with sourse key to insert";
 	
@@ -138,19 +148,19 @@ void List::insertBefore(valtype key, NODE *elem)
 	pPrev->pNext = elem;
 }
 
-void List::insertAfter(valtype key, NODE *elem)
+template <class valtype>
+void List<valtype>::insertAfter(valtype key, NODE<valtype> *elem)
 {
 	if (!pFirst) throw "List is empty";
-	NODE *point = search(key);
+	NODE<valtype> *point = search(key);
 	if (point == 0) 
 		throw "No place with sourse key to insert";
 	elem->pNext = point->pNext;
 	point->pNext = elem;
 }
 
-NODE* List::getFirst()
+template <class valtype>
+NODE<valtype>* List<valtype>::getFirst()
 {
 	return pFirst;
 }
-
-

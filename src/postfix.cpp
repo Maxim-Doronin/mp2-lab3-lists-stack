@@ -1,11 +1,13 @@
 #include "postfix.h"
+#include "stack.h"
+#include "stack.cpp"
 
 string postfix_notation(string expression)
 {
-	Stack opStack;
-	Stack trackStack;
+	Stack<char> opStack;
+	Stack<char> trackStack;
 
-	map <unsigned char, int> op;
+	map <char, int> op;
 	op['*'] = 3;
 	op['/'] = 3;
 	op['+'] = 2;
@@ -50,19 +52,22 @@ string postfix_notation(string expression)
 	return result;
 }
 
-void postfix_calculation(string expression)
+float postfix_calculation(string expression)
 {
-	Stack trackStack;
+	Stack<float> trackStack;
 	char buff;
-	char leftOperand;
-	char rightOperand;
+	float buffVal;
+	float leftOperand;
+	float rightOperand;
 
+	cout << "Input values: " <<endl;
 	for (int i = 0; i < expression.length(); i++){
 		buff = expression[i];
 		if   (((buff >= 0x41)&&(buff <= 0x5A))
-			||((buff >= 0x61)&&(buff <= 0x7A))
-			||((buff >= 0x30)&&(buff <= 0x39))){
-			trackStack.push(buff);
+			||((buff >= 0x61)&&(buff <= 0x7A))){
+			cout << buff << " = ";
+			cin  >> buffVal;
+			trackStack.push(buffVal);
 			continue;
 		}
 
@@ -77,5 +82,5 @@ void postfix_calculation(string expression)
 		}
 
 	}
-	cout << "0x" << (int)trackStack.look() << endl;
+	return trackStack.look();
 }
