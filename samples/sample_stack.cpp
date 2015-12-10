@@ -9,7 +9,15 @@ int main()
 {
 	string expression;	
 	cin  >> expression;
-	cout << postfix_notation(expression) << endl;
-	cout << postfix_calculation(postfix_notation(expression)) <<endl;
+	string notation;
+	try {
+		notation = postfix_notation(expression);
+		cout << notation << endl;
+		cout << postfix_calculation(notation) <<endl;
+	}
+	catch(...){
+		cout << "Invalide input" << endl;
+		return 1;
+	}
 }
 
