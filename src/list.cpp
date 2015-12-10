@@ -70,6 +70,7 @@ NODE<valtype>* List<valtype>::searchPrev(valtype key, NODE<valtype> *&elem)
 template <class valtype>
 void List<valtype>::erase(NODE<valtype> *elem)
 {
+	if(!pFirst) throw "List is empty";
 	NODE<valtype> *point = pFirst;
 	NODE<valtype> *pPrev = 0;
 	while ((point != 0)&&(point != elem)) {

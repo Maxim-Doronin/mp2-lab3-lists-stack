@@ -84,7 +84,7 @@ float postfix_calculation(string expression)
 		if   (((buff >= 0x41)&&(buff <= 0x5A))
 			||((buff >= 0x61)&&(buff <= 0x7A))){
 			if (!values.count(buff)){
-				cout << buff << " = ";
+				cout << '\t' << buff << " = ";
 				cin  >> values[buff];
 			}
 			trackStack.push(values[buff]);
