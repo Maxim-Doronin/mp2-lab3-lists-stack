@@ -20,7 +20,7 @@ List<valtype>::List(const List<valtype> &list)
 template <class valtype>
 void List<valtype>::print()
 {
-	if (pFirst == 0) {
+	if (!pFirst) {
 		std::cout << "No members" << std::endl;
 		return;
 	}
@@ -36,13 +36,13 @@ void List<valtype>::print()
 template <class valtype>
 NODE<valtype>* List<valtype>::search(valtype key)
 {
-	if (pFirst == 0) throw "List is empty";
+	if (!pFirst) throw "List is empty";
 	
 	NODE<valtype> *tmp = pFirst;
 	while((tmp != 0)&&(tmp->key != key))
 		tmp = tmp->pNext;
 	
-	if ((tmp == 0)||(tmp->key != key)) return 0;
+	if ((!tmp)||(tmp->key != key)) return 0;
 	
 	return tmp;
 }
@@ -50,7 +50,7 @@ NODE<valtype>* List<valtype>::search(valtype key)
 template <class valtype>
 NODE<valtype>* List<valtype>::searchPrev(valtype key, NODE<valtype> *&elem)
 {	
-	if (pFirst == 0) return 0;
+	if (!pFirst) return 0;
 	
 	NODE<valtype> *pPrev = 0;
 	elem = pFirst;
@@ -58,7 +58,7 @@ NODE<valtype>* List<valtype>::searchPrev(valtype key, NODE<valtype> *&elem)
 		pPrev = elem;
 		elem = elem->pNext;
 	}
-	if ((elem == 0)||(elem->key != key)) {
+	if ((!elem)||(elem->key != key)) {
 		elem = 0;
 		pPrev = 0;
 		return 0;
@@ -79,7 +79,7 @@ void List<valtype>::erase(NODE<valtype> *elem)
 	}
 	if (point != elem) return;
 	
-	if (pPrev == 0) {
+	if (!pPrev) {
 		pFirst = pFirst->pNext;
 		delete point;
 		return;
@@ -95,9 +95,9 @@ void List<valtype>::erase(valtype key)
 	if(!pFirst) throw "List is empty";
 	NODE<valtype> *point;
 	NODE<valtype> *pPrev = searchPrev(key, point);
-	if ((pPrev == 0)&&(pFirst->key != key)) 
+	if ((!pPrev)&&(pFirst->key != key)) 
 		throw "Can't find element";
-	if (pPrev == 0) {
+	if (!pPrev) {
 		pFirst = pFirst->pNext;
 		delete point;
 		return;
@@ -138,11 +138,11 @@ void List<valtype>::insertBefore(valtype key, NODE<valtype> *elem)
 	if (!pFirst) throw "List is empty";
 	NODE<valtype> *point;
 	NODE<valtype> *pPrev = searchPrev(key, point);
-	if ((pPrev == 0)&&(pFirst->key != key)) 
+	if ((!pPrev)&&(pFirst->key != key)) 
 		throw "No place with sourse key to insert";
 	
 	elem->pNext = point;
-	if (pPrev == 0)	{
+	if (!pPrev)	{
 		pFirst = elem;
 		return;
 	}
@@ -154,7 +154,7 @@ void List<valtype>::insertAfter(valtype key, NODE<valtype> *elem)
 {
 	if (!pFirst) throw "List is empty";
 	NODE<valtype> *point = search(key);
-	if (point == 0) 
+	if (!point) 
 		throw "No place with sourse key to insert";
 	elem->pNext = point->pNext;
 	point->pNext = elem;
