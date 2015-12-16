@@ -98,11 +98,7 @@ TEST(List, list_after_erase_looks_right){
 	list1.insertLast(3);
 	list1.insertLast(6);
 	list1.erase(5);
-	EXPECT_EQ(list1.getFirst()->key, 2);
-	list1.erase(list1.getFirst()->key);
-	EXPECT_EQ(list1.getFirst()->key, 3);
-	list1.erase(list1.getFirst()->key);
-	EXPECT_EQ(list1.getFirst()->key, 6);
+	ASSERT_FALSE(list1.search(5));
 }
 
 TEST(List, list_after_erase_first_looks_right){
@@ -185,6 +181,17 @@ TEST(List, throws_when_insert_before_in_empty_list) {
 	ASSERT_ANY_THROW(list.insertBefore(5, elem));
 }
 
+TEST(List, list_after_insert_before_looks_right){
+	List<char> list;
+	list.insertLast(5);
+	list.insertLast(7);
+	list.insertLast(9);
+	NODE<char> *elem = new NODE<char>;
+	elem->key = 1;
+	list.insertBefore(7, elem);
+	EXPECT_EQ(list.search(1)->pNext->key, 7);
+}
+
 TEST(List, can_insert_after) {
 	List<char> list;
 	list.insertLast(5);
@@ -220,6 +227,17 @@ TEST(List, throws_when_insert_after_in_empty_list) {
 	NODE<char> *elem = new NODE<char>;
 	elem->key = 1;
 	ASSERT_ANY_THROW(list.insertAfter(5, elem));
+}
+
+TEST(List, list_after_insert_after_looks_right){
+	List<char> list;
+	list.insertLast(5);
+	list.insertLast(7);
+	list.insertLast(9);
+	NODE<char> *elem = new NODE<char>;
+	elem->key = 1;
+	list.insertAfter(7, elem);
+	EXPECT_EQ(list.search(1)->pNext->key, 9);
 }
 
 TEST(List, can_get_first) {
