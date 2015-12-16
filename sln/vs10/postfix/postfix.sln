@@ -11,6 +11,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tests", "tests\tests.vcxpro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "postfix_notation", "postfix_notation\postfix_notation.vcxproj", "{8995405C-178F-492A-8916-8525990A5317}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sample_list", "sample_list\sample_list.vcxproj", "{F8256B73-9D7F-410F-A3A8-D16F8C0C2D95}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sample_postfix", "sample_postfix\sample_postfix.vcxproj", "{D1E50691-1B36-4CBD-B4AC-7AA278EF909E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -37,6 +41,14 @@ Global
 		{8995405C-178F-492A-8916-8525990A5317}.Debug|Win32.Build.0 = Debug|Win32
 		{8995405C-178F-492A-8916-8525990A5317}.Release|Win32.ActiveCfg = Release|Win32
 		{8995405C-178F-492A-8916-8525990A5317}.Release|Win32.Build.0 = Release|Win32
+		{F8256B73-9D7F-410F-A3A8-D16F8C0C2D95}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F8256B73-9D7F-410F-A3A8-D16F8C0C2D95}.Debug|Win32.Build.0 = Debug|Win32
+		{F8256B73-9D7F-410F-A3A8-D16F8C0C2D95}.Release|Win32.ActiveCfg = Release|Win32
+		{F8256B73-9D7F-410F-A3A8-D16F8C0C2D95}.Release|Win32.Build.0 = Release|Win32
+		{D1E50691-1B36-4CBD-B4AC-7AA278EF909E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D1E50691-1B36-4CBD-B4AC-7AA278EF909E}.Debug|Win32.Build.0 = Debug|Win32
+		{D1E50691-1B36-4CBD-B4AC-7AA278EF909E}.Release|Win32.ActiveCfg = Release|Win32
+		{D1E50691-1B36-4CBD-B4AC-7AA278EF909E}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

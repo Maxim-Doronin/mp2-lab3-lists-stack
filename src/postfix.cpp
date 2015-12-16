@@ -2,7 +2,7 @@
 #include "stack.h"
 #include "stack.cpp"
 
-string postfix_notation(string expression)
+string postfix::postfix_notation(string expression)
 {
 	Stack<char> opStack;
 	Stack<char> trackStack;
@@ -67,7 +67,7 @@ string postfix_notation(string expression)
 	return result;
 }
 
-float postfix_calculation(string expression)
+float postfix::postfix_calculation(string expression)
 {
 	if (expression == "")
 		throw "no data";
