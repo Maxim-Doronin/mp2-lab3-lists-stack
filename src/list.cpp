@@ -18,6 +18,17 @@ List<valtype>::List(const List<valtype> &list)
 }
 
 template <class valtype>
+List<valtype>::~List()
+{
+    NODE<valtype> *tmp = pFirst;
+	while (pFirst) {
+		pFirst = pFirst->pNext;
+		delete tmp;
+		tmp = pFirst;
+	}
+}
+
+template <class valtype>
 void List<valtype>::print()
 {
 	if (!pFirst) {

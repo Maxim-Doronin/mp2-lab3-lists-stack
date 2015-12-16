@@ -15,6 +15,12 @@ Stack<valtype>::Stack(const Stack<valtype> &s)
 }
 
 template <class valtype>
+Stack<valtype>::~Stack()
+{
+    delete this->list;
+}
+
+template <class valtype>
 int Stack<valtype>::isEmpty() const
 {
 	return list->getFirst() == 0;

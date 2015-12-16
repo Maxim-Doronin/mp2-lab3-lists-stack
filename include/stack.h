@@ -9,6 +9,7 @@ private:
 public:
 	Stack();
 	Stack(const Stack<valtype> &s);
+    ~Stack();
 	int isEmpty() const;
 	int isFull() const;
 	void push(valtype key);
@@ -21,6 +22,9 @@ Stack<valtype>::Stack();
 
 template <class valtype>
 Stack<valtype>::Stack(const Stack<valtype> &s);
+
+template <class valtype>
+Stack<valtype>::~Stack();
 
 template <class valtype>
 int Stack<valtype>::isEmpty() const;

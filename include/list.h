@@ -17,6 +17,7 @@ private:
 public:
 	List();
 	List(const List &list);
+    ~List();
 	
 	void print();
 	NODE<valtype>* search(valtype key);
@@ -40,6 +41,9 @@ List<valtype>::List();
 
 template <class valtype>
 List<valtype>::List(const List<valtype> &list);
+
+template <class valtype>
+List<valtype>::~List();
 
 template <class valtype>
 void List<valtype>::print();
