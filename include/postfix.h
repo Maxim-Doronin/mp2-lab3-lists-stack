@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class postfix{
+class Postfix{
 public:
 	static string postfix_notation(string);
 	static float postfix_calculation(string);
