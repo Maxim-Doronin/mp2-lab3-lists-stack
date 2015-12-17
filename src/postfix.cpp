@@ -103,6 +103,7 @@ float Postfix::postfix_calculation(string expression)
 		case '-':{trackStack.push(leftOperand - rightOperand); break;}
 		case '*':{trackStack.push(leftOperand * rightOperand); break;}
 		case '/':{trackStack.push(leftOperand / rightOperand); break;}
+		case '=':{trackStack.push(rightOperand);				   break;}
 		}
 	}
 
