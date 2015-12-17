@@ -14,8 +14,8 @@ int main()
 	string notation;
 	float result;
 	try {
-		notation = postfix::postfix_notation(expression);
-		result = postfix::postfix_calculation(notation);
+		notation = Postfix::postfix_notation(expression);
+		result = Postfix::postfix_calculation(notation);
 	}
 	catch(...){
 		cout << "Error! Invalide input" << endl;
