@@ -81,6 +81,8 @@ float Postfix::postfix_calculation(string expression)
 	cout << "Input values: " <<endl;
 	for (int i = 0; i < expression.length(); i++){
 		buff = expression[i];
+		if (expression[expression.length() - 1] == '=')
+			values[expression[0]] = 0;
 		if   (((buff >= 0x41)&&(buff <= 0x5A))
 			||((buff >= 0x61)&&(buff <= 0x7A))){
 			if (!values.count(buff)){
@@ -103,7 +105,7 @@ float Postfix::postfix_calculation(string expression)
 		case '-':{trackStack.push(leftOperand - rightOperand); break;}
 		case '*':{trackStack.push(leftOperand * rightOperand); break;}
 		case '/':{trackStack.push(leftOperand / rightOperand); break;}
-		case '=':{trackStack.push(rightOperand);				   break;}
+		case '=':{return rightOperand;      				   break;}
 		}
 	}
 
